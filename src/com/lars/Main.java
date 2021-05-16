@@ -1,6 +1,5 @@
 package com.lars;
 
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -227,7 +226,7 @@ class Game {
         Optional<Seed> seed = seedsWithScore.stream().reduce((s1, s2) -> s1.seedScore > s2.seedScore ? s1 : s2);
 
 
-        if(treesThatCanBeCompleted.size() >2){
+        if(treesThatCanBeCompleted.size() >4){
             return  completeTree.map(t-> new Action(Action.COMPLETE, t.cellIndex)).orElse(waitAction);
         }
 
@@ -309,7 +308,7 @@ class Game {
     private int getShadeBonus(Cell cell) {
         return ((6-cell.shade) * (23-day)/2)/3;
     }
-
+    
     private Tree growScore(Tree t, long grow0, long grow1, long grow2) {
         long growCostScore = 0;
         if (t.size == 0) {
